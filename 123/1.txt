@@ -1,3 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 46SDGHDgjfgjfsssssssa
+=======
+46SDGHDgjfgjfsss
+>>>>>>> origin/master
 

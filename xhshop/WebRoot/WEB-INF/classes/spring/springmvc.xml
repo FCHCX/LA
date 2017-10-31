@@ -23,8 +23,8 @@
 		<!-- <bean  class="cn.itcast.ssm.controller.ItemsController3"></bean> -->
 		
 		<!-- 处理器映射器 -->
-		<!-- <bean
-		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" /> -->
+		<bean
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 		
 		<!-- <!—简单url映射 --> 
 	<!-- <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -40,10 +40,10 @@
 		<mvc:resources location="/js/" mapping="/js/**"/>
 		
 		<!--注解映射器 -->
-	 <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>  -->
+	 <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> 
 		
 		<!--注解适配器 -->
-	<!--  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>  -->
+	 <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/> 
 		
 		<!-- 使用mvc:annotation-driven代替上边的注解映射器和注解适配器 
 		默认加载很多的参数绑定方法，比如json转换解析器默认加载了
@@ -56,9 +56,9 @@
 		 ></mvc:annotation-driven>  
 		
 		<!-- 处理器适配器 -->
-		<!-- <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>  -->
+		<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/> 
 		<!-- 另一个处理器适配器 -->
-		<!-- <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean> -->
+		<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
 		<!-- 自定义参数绑定 -->
 		<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<!-- 转换器 -->
@@ -73,8 +73,8 @@
 		<!-- 视图解析器 -->
 
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		 <property name="prefix" value="/WEB-INF/jsp/"/>
-		 <property name="suffix" value=".jsp"/> 
+		<!-- property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/> -->
 		
 		</bean>
 		<!-- 校验器 -->

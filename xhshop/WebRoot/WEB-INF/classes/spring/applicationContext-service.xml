@@ -15,4 +15,6 @@
 		<!-- 商品管理的service -->
 		<bean id="itemsServiceImpl" class="com.xiaohe.service.impl.ItemsServiceImpl"></bean>
 		
+		
+		<bean id="loginServiceImpl" class="com.xiaohe.service.impl.LoginServiceImpl"></bean>
 </beans>

@@ -7,7 +7,7 @@ import com.xiaohe.mapper.StoreMapper;
 import com.xiaohe.mapper.StoreMapperCustom;
 import com.xiaohe.po.ShopinfoQueryStore;
 import com.xiaohe.po.Store;
-import com.xiaohe.service.*;
+import com.xiaohe.service.ItemsService;
 public class ItemsServiceImpl implements ItemsService{
 
 	@Autowired
@@ -25,7 +25,15 @@ public class ItemsServiceImpl implements ItemsService{
 	public List<ShopinfoQueryStore> SelectStoreAndshopinfo(
 			ShopinfoQueryStore shopinfoQueryStore) {
 		// TODO Auto-generated method stub
+		
+		
 		return storeMapperCustom.QueryAllShopinfo();
+	}
+
+	@Override
+	public ShopinfoQueryStore oneShopinfoQueryStore(int id) throws Exception {
+		
+		return null;
 	}
 	
 	

@@ -160,5 +160,11 @@
     update users
     set Upwd = #{upwd,jdbcType=VARCHAR}
     where Uname = #{uname,jdbcType=VARCHAR}
-  </update>
+  </update> 
+  <select id="queryUsersByLoginUser" parameterType="com.xiaohe.po.Users" resultType="com.xiaohe.po.Users">
+  	select * from users where
+  	Uname=#{uname} and
+  	Upwd=#{upwd}
+  	
+  </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.xiaohe.po;
 
-public class ShopinfoCustom extends Shopinfo{
+import java.util.List;
 
+public class ShopinfoCustom extends Shopinfo{
+	
 }

@@ -12,7 +12,7 @@
     <result column="Uanswer" property="uanswer" jdbcType="VARCHAR" />
     <result column="Uaddress" property="uaddress" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Example_Where_Clause">
+  <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >

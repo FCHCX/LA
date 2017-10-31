@@ -16,7 +16,7 @@ public class ShopinfoQueryVo {
 		return "ShopinfoQueryVo [shopinfo=" + shopinfo + ", shopinfoList="
 				+ shopinfoList + "]";
 	}
-	
+
 	public void setShopinfo(Shopinfo shopinfo) {
 		this.shopinfo = shopinfo;
 	}

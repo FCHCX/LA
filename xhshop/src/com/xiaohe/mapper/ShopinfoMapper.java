@@ -27,5 +27,4 @@ public interface ShopinfoMapper {
     int updateByPrimaryKeySelective(Shopinfo record);
 
     int updateByPrimaryKey(Shopinfo record);
-   // public void insert(Float Sprice);
 }

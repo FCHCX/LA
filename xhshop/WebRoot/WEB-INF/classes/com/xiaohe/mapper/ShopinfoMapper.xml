@@ -460,5 +460,4 @@
       Sobject = #{sobject,jdbcType=VARCHAR}
     where Sid = #{sid,jdbcType=INTEGER}
   </update>
-  
 </mapper>

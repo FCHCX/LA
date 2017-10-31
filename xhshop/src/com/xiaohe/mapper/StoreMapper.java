@@ -2,9 +2,7 @@ package com.xiaohe.mapper;
 
 import com.xiaohe.po.Store;
 import com.xiaohe.po.StoreExample;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface StoreMapper {
@@ -29,5 +27,4 @@ public interface StoreMapper {
     int updateByPrimaryKeySelective(Store record);
 
     int updateByPrimaryKey(Store record);
-    
 }

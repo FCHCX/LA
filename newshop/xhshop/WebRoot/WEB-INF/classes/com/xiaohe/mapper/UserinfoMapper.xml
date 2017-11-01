@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaohe.mapper.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xiaohe.po.Userinfo" >
+    <id column="Ufuname" property="ufuname" jdbcType="VARCHAR" />
+    <result column="Ufsex" property="ufsex" jdbcType="VARCHAR" />
+    <result column="Ufsheng" property="ufsheng" jdbcType="VARCHAR" />
+    <result column="Ufshi" property="ufshi" jdbcType="VARCHAR" />
+    <result column="ufphone" property="ufphone" jdbcType="VARCHAR" />
+    <result column="Ufname" property="ufname" jdbcType="VARCHAR" />
+    <result column="Uqustion" property="uqustion" jdbcType="VARCHAR" />
+    <result column="Uanswer" property="uanswer" jdbcType="VARCHAR" />
+    <result column="Uaddress" property="uaddress" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Ufuname, Ufsex, Ufsheng, Ufshi, ufphone, Ufname, Uqustion, Uanswer, Uaddress
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiaohe.po.UserinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where Ufuname = #{ufuname,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from userinfo
+    where Ufuname = #{ufuname,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xiaohe.po.UserinfoExample" >
+    delete from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xiaohe.po.Userinfo" >
+    insert into userinfo (Ufuname, Ufsex, Ufsheng, 
+      Ufshi, ufphone, Ufname, 
+      Uqustion, Uanswer, Uaddress
+      )
+    values (#{ufuname,jdbcType=VARCHAR}, #{ufsex,jdbcType=VARCHAR}, #{ufsheng,jdbcType=VARCHAR}, 
+      #{ufshi,jdbcType=VARCHAR}, #{ufphone,jdbcType=VARCHAR}, #{ufname,jdbcType=VARCHAR}, 
+      #{uqustion,jdbcType=VARCHAR}, #{uanswer,jdbcType=VARCHAR}, #{uaddress,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaohe.po.Userinfo" >
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ufuname != null" >
+        Ufuname,
+      </if>
+      <if test="ufsex != null" >
+        Ufsex,
+      </if>
+      <if test="ufsheng != null" >
+        Ufsheng,
+      </if>
+      <if test="ufshi != null" >
+        Ufshi,
+      </if>
+      <if test="ufphone != null" >
+        ufphone,
+      </if>
+      <if test="ufname != null" >
+        Ufname,
+      </if>
+      <if test="uqustion != null" >
+        Uqustion,
+      </if>
+      <if test="uanswer != null" >
+        Uanswer,
+      </if>
+      <if test="uaddress != null" >
+        Uaddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ufuname != null" >
+        #{ufuname,jdbcType=VARCHAR},
+      </if>
+      <if test="ufsex != null" >
+        #{ufsex,jdbcType=VARCHAR},
+      </if>
+      <if test="ufsheng != null" >
+        #{ufsheng,jdbcType=VARCHAR},
+      </if>
+      <if test="ufshi != null" >
+        #{ufshi,jdbcType=VARCHAR},
+      </if>
+      <if test="ufphone != null" >
+        #{ufphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ufname != null" >
+        #{ufname,jdbcType=VARCHAR},
+      </if>
+      <if test="uqustion != null" >
+        #{uqustion,jdbcType=VARCHAR},
+      </if>
+      <if test="uanswer != null" >
+        #{uanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="uaddress != null" >
+        #{uaddress,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xiaohe.po.UserinfoExample" resultType="java.lang.Integer" >
+    select count(*) from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update userinfo
+    <set >
+      <if test="record.ufuname != null" >
+        Ufuname = #{record.ufuname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ufsex != null" >
+        Ufsex = #{record.ufsex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ufsheng != null" >
+        Ufsheng = #{record.ufsheng,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ufshi != null" >
+        Ufshi = #{record.ufshi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ufphone != null" >
+        ufphone = #{record.ufphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ufname != null" >
+        Ufname = #{record.ufname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uqustion != null" >
+        Uqustion = #{record.uqustion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uanswer != null" >
+        Uanswer = #{record.uanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uaddress != null" >
+        Uaddress = #{record.uaddress,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update userinfo
+    set Ufuname = #{record.ufuname,jdbcType=VARCHAR},
+      Ufsex = #{record.ufsex,jdbcType=VARCHAR},
+      Ufsheng = #{record.ufsheng,jdbcType=VARCHAR},
+      Ufshi = #{record.ufshi,jdbcType=VARCHAR},
+      ufphone = #{record.ufphone,jdbcType=VARCHAR},
+      Ufname = #{record.ufname,jdbcType=VARCHAR},
+      Uqustion = #{record.uqustion,jdbcType=VARCHAR},
+      Uanswer = #{record.uanswer,jdbcType=VARCHAR},
+      Uaddress = #{record.uaddress,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaohe.po.Userinfo" >
+    update userinfo
+    <set >
+      <if test="ufsex != null" >
+        Ufsex = #{ufsex,jdbcType=VARCHAR},
+      </if>
+      <if test="ufsheng != null" >
+        Ufsheng = #{ufsheng,jdbcType=VARCHAR},
+      </if>
+      <if test="ufshi != null" >
+        Ufshi = #{ufshi,jdbcType=VARCHAR},
+      </if>
+      <if test="ufphone != null" >
+        ufphone = #{ufphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ufname != null" >
+        Ufname = #{ufname,jdbcType=VARCHAR},
+      </if>
+      <if test="uqustion != null" >
+        Uqustion = #{uqustion,jdbcType=VARCHAR},
+      </if>
+      <if test="uanswer != null" >
+        Uanswer = #{uanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="uaddress != null" >
+        Uaddress = #{uaddress,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Ufuname = #{ufuname,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaohe.po.Userinfo" >
+    update userinfo
+    set Ufsex = #{ufsex,jdbcType=VARCHAR},
+      Ufsheng = #{ufsheng,jdbcType=VARCHAR},
+      Ufshi = #{ufshi,jdbcType=VARCHAR},
+      ufphone = #{ufphone,jdbcType=VARCHAR},
+      Ufname = #{ufname,jdbcType=VARCHAR},
+      Uqustion = #{uqustion,jdbcType=VARCHAR},
+      Uanswer = #{uanswer,jdbcType=VARCHAR},
+      Uaddress = #{uaddress,jdbcType=INTEGER}
+    where Ufuname = #{ufuname,jdbcType=VARCHAR}
+  </update>
+</mapper>

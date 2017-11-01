@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaohe.mapper.ControllersMapper" >
+  <resultMap id="BaseResultMap" type="com.xiaohe.po.Controllers" >
+    <id column="Cid" property="cid" jdbcType="INTEGER" />
+    <result column="Cname" property="cname" jdbcType="VARCHAR" />
+    <result column="Cpwd" property="cpwd" jdbcType="VARCHAR" />
+    <result column="Croleid" property="croleid" jdbcType="INTEGER" />
+    <result column="Csex" property="csex" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Cid, Cname, Cpwd, Croleid, Csex
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xiaohe.po.ControllersExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from controllers
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from controllers
+    where Cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from controllers
+    where Cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xiaohe.po.ControllersExample" >
+    delete from controllers
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xiaohe.po.Controllers" >
+    insert into controllers (Cid, Cname, Cpwd, 
+      Croleid, Csex)
+    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{cpwd,jdbcType=VARCHAR}, 
+      #{croleid,jdbcType=INTEGER}, #{csex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiaohe.po.Controllers" >
+    insert into controllers
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        Cid,
+      </if>
+      <if test="cname != null" >
+        Cname,
+      </if>
+      <if test="cpwd != null" >
+        Cpwd,
+      </if>
+      <if test="croleid != null" >
+        Croleid,
+      </if>
+      <if test="csex != null" >
+        Csex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="cname != null" >
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="cpwd != null" >
+        #{cpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="croleid != null" >
+        #{croleid,jdbcType=INTEGER},
+      </if>
+      <if test="csex != null" >
+        #{csex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xiaohe.po.ControllersExample" resultType="java.lang.Integer" >
+    select count(*) from controllers
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update controllers
+    <set >
+      <if test="record.cid != null" >
+        Cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cname != null" >
+        Cname = #{record.cname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cpwd != null" >
+        Cpwd = #{record.cpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.croleid != null" >
+        Croleid = #{record.croleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.csex != null" >
+        Csex = #{record.csex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update controllers
+    set Cid = #{record.cid,jdbcType=INTEGER},
+      Cname = #{record.cname,jdbcType=VARCHAR},
+      Cpwd = #{record.cpwd,jdbcType=VARCHAR},
+      Croleid = #{record.croleid,jdbcType=INTEGER},
+      Csex = #{record.csex,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiaohe.po.Controllers" >
+    update controllers
+    <set >
+      <if test="cname != null" >
+        Cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="cpwd != null" >
+        Cpwd = #{cpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="croleid != null" >
+        Croleid = #{croleid,jdbcType=INTEGER},
+      </if>
+      <if test="csex != null" >
+        Csex = #{csex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiaohe.po.Controllers" >
+    update controllers
+    set Cname = #{cname,jdbcType=VARCHAR},
+      Cpwd = #{cpwd,jdbcType=VARCHAR},
+      Croleid = #{croleid,jdbcType=INTEGER},
+      Csex = #{csex,jdbcType=VARCHAR}
+    where Cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>

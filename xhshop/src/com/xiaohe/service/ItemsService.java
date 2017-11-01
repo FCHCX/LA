@@ -10,7 +10,7 @@ public interface ItemsService {
 
 	public List<ShopinfoCustom> queryAllItems() throws Exception;
 	
-	public void deleterItems(Integer id) throws Exception;
+	public void deleteItemsByMoreId(Integer [] items_id) throws Exception;
 
 	public void updateItems(ShopinfoCustom shopinfoCustom) throws Exception;
 	
@@ -21,4 +21,6 @@ public interface ItemsService {
 	public List<ShopinfoCustom> queryItemsByPriceSize() throws Exception;
 	
 	public List<ShopinfoCustom> queryItemsByPriceSize2() throws Exception;
+
+	public List<ShopinfoCustom> queryItemsByBetweenSize(ShopinfoQueryVo shopinfoQueryVo);
 }

@@ -16,4 +16,8 @@ public interface ShopinfoMapperCustom {
 	public List<ShopinfoCustom> queryItemsByPriceSize() throws Exception;
 	
 	public List<ShopinfoCustom> queryItemsByPriceSize2() throws Exception;
+	
+	public List<ShopinfoCustom> queryItemsByBetweenSize(ShopinfoQueryVo shopinfoQueryVo);
+	
+	 public void deleteItemsByMoreId(ShopinfoQueryVo shopinfoQueryVo)throws Exception;
 }

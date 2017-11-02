@@ -23,6 +23,7 @@ public class ItemsController {
 	//商品上架
 	@RequestMapping("/addItems")
 	public String addItems(ShopinfoCustom shopinfoCustom,MultipartFile shopinfo_pic) throws Exception{
+		//上传照片
 		String originalFilename=shopinfo_pic.getOriginalFilename();
 		if(shopinfo_pic!=null&&originalFilename!=null&&originalFilename.length()>0){
 			
@@ -35,6 +36,7 @@ public class ItemsController {
 //			System.out.println(newFileName);
 //			System.out.println(originalFilename.substring(originalFilename.lastIndexOf(".")));
 		}
+		//添加商品
 		itemsService.addItems(shopinfoCustom);
 		return null;
 		
@@ -44,18 +46,18 @@ public class ItemsController {
 	@RequestMapping("/queryAllItems")
 	@ResponseBody
 	public List<ShopinfoCustom> queryItems() throws Exception{
-		
-		return  itemsService.queryAllItems();
+		List<ShopinfoCustom> shopinfoList=itemsService.queryAllItems();
+		return  shopinfoList;
 //		ShopinfoCustom shopinfoCustom =  (ShopinfoCustom) itemsService.queryAllItems();
 //		return  shopinfoCustom;
 		
 		
 	}
-	//商品下架
+	//商品下架批量
 	@RequestMapping("/deleterItems")
 	
-	public String deleterItems(Integer id) throws Exception{
-		itemsService.deleterItems(id);
+	public String deleterItems(Integer [] items_id) throws Exception{
+		itemsService.deleteItemsByMoreId(items_id);
 		return null;
 				
 	}
@@ -74,8 +76,8 @@ public class ItemsController {
 	@RequestMapping("/searchItems")
 	@ResponseBody
 	public List<ShopinfoCustom> searchItems(ShopinfoQueryVo shopinfoQueryVo) throws Exception{
-		
-		return itemsService.searchItems(shopinfoQueryVo);
+		List<ShopinfoCustom> shopinfoList=itemsService.searchItems(shopinfoQueryVo);
+		return shopinfoList;
 //		return null;
 		
 		
@@ -86,8 +88,8 @@ public class ItemsController {
 	@RequestMapping("/queryItemsByType")
 	@ResponseBody
 	public List<ShopinfoCustom> queryItemsByType(ShopinfoQueryVo shopinfoQueryVo) throws Exception{
-		
-		return itemsService.queryItemsByType(shopinfoQueryVo);
+		List<ShopinfoCustom> shopinfoList=itemsService.queryItemsByType(shopinfoQueryVo);
+		return shopinfoList;
 //		return null;
 			
 		
@@ -106,6 +108,18 @@ public class ItemsController {
 			//按从小到大排序
 			return itemsService.queryItemsByPriceSize2();
 		}
+		
+		
+		
+	}
+	
+	//商品价格按区间筛选
+	
+	@RequestMapping("/queryItemsByBetweenSize")
+	@ResponseBody
+	public List<ShopinfoCustom> queryItemsByBetweenSize(ShopinfoQueryVo shopinfoQueryVo) throws Exception{
+		List<ShopinfoCustom> shopinfoList=itemsService.queryItemsByBetweenSize(shopinfoQueryVo);
+		return	shopinfoList;
 		
 		
 		

@@ -5,13 +5,19 @@
 	<sql id="query_items_where">
 	<!--  使用动态sql，通过if判断，满足条件进行动态sql拼接-->
 	<!--  商品查询条件通过ItemsQueryVo这个包装类的ItemsCutom属性进行传递-->
-	<if test="shopinfoQueryVo!=null">
-		<if test="shopinfoQueryVo.sname!=null and shopinfoQueryVo.sname!=''">
-			Shopinfo.sname like '%${shopinfoQueryVo.sname}%'
+	<if test="shopinfoCustom!=null">
+		<if test="shopinfoCustom.sname!=null and shopinfoCustom.sname!=''">
+			shopinfo.Sname like '%${shopinfoCustom.sname}%'
 		</if>
 	</if>
 	</sql>
-	
+	<delete id="deleteItemsByMoreId" parameterType="cn.itcast.ssm.po.ShopinfoQueryVo">
+	 delete from shopinfo where id in
+		<!-- (?,?,?,?,?) -->
+		<foreach collection="ids" open="(" close=")" item="id" separator=",">
+			#{id}
+		</foreach>
+	</delete>
 	
 	
 	
@@ -42,7 +48,7 @@
 	
 	<select id="queryItemsByType" parameterType="com.xiaohe.po.ShopinfoQueryVo"  resultType="com.xiaohe.po.ShopinfoCustom">
 		
-		select shopinfo.* from shopinfo where Stype=#{stype}
+		select shopinfo.* from shopinfo where Stype=#{shopinfoCustom.stype}
 		
 	</select>
 	
@@ -55,5 +61,13 @@
 		select * from shopinfo order by Sprice 
 	
 	</select>
-
+	
+	
+	 <select id="queryItemsByBetweenSize" parameterType="com.xiaohe.po.ShopinfoQueryVo" resultType="com.xiaohe.po.ShopinfoCustom">
+		
+		select * from shopinfo where Sprice &lt;= #{right}  AND  Sprice &gt;= #{left}
+	
+	</select> 
+	
+	
 </mapper>

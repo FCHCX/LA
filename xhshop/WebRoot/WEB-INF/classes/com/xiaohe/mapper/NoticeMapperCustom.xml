@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaohe.mapper.NoticeMapperCustom" >
+
+<select id="qureyAllNotice" resultType="com.xiaohe.po.Notice">
+		select * from notice 
+</select>
+
+
+<!--  添加文章 
+<insert id="addNotice" ="com.xiaohe.po.Notice">
+		
+</insert> -->
+
+<!-- 删除文章 -->
+<delete id="deleteNotice" parameterType="java.lang.Integer">
+	delete * from notice where Ntid = #{Ntid}
+</delete>
+
+<!-- 搜索文章 -->
+<select id="searchNotice" resultType="com.xiaohe.po.NoticeControllerVo">		
+	SELECT * from notice,controllers where notice.Nid=controllers.Cid		
+ </select>
+ 
+<!-- 查询文章条数 -->
+<select id="queryNoticeAllCount" resultType="int">
+		select count(*) from notice
+</select>
+
+
+
+</mapper>

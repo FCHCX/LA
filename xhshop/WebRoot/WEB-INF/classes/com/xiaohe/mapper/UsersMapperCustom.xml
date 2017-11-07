@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaohe.mapper.UsersMapperCustom" >
+	<select id="selectByuname" parameterType="com.xiaohe.po.Users" resultType="com.xiaohe.po.Users">
+		select Uname from users where Uname=#{Uname}
+	</select>
+	
+	<insert id="insertUsers" parameterType="com.xiaohe.po.Users">
+		insert into users (Uname,Upwd) values (#{Uname},#{Upwd})
+		
+	</insert>
+	<!-- 找回密码，判断输入的问题和答案是否一致 -->
+	<select id="findpassword" parameterType="com.xiaohe.po.UsersInfoVo" resultType="com.xiaohe.po.Userinfo">
+		select users.Upwd from  users,userinfo where
+		userinfo.Ufphone=#{Ufphone} and 
+		userinfo.Uqustion=#{Uqustion} and 
+		userinfo.Uanswer=#{Uanswer} and users.Uname=userinfo.Ufuname
+
+	</select>
+	
+	<select id="queryUserByUsers" parameterType="com.xiaohe.po.Users" resultType="com.xiaohe.po.Users">
+  	select * from users where
+  		Uname=#{uname} and
+  		Upwd=#{upwd}
+  </select>
+	
+</mapper>
